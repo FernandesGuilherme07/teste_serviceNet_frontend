@@ -6,32 +6,45 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  console.log(setEmail.value);
+  console.log(email);
+  console.log(password);
 
   return (
-    <form action="" id="form">
-      <div id="login">
-        <h1>Login</h1>
-        <section>
-          <label htmlFor="email"> Email</label>
-          <input type="email" required name="email" value={setEmail} onChange={email} placeholder="Seu email..." />
-        </section>
-        <section>
-          <label htmlFor="password">Senha </label>
-          <input
-            type="password"
-            required
-            name="password"
-            value={password}
-            onChange={setPassword}
-            placeholder="Sua senha..."
-          />
-        </section>
-        <section id="container">
-          <button>Entrar</button>
-        </section>
-      </div>
-    </form>
+    <div className="body">
+      <form action="" id="form">
+        <div id="login">
+          <section id="container-logo">
+            <img src="./logo.png" alt="" />
+          </section>
+
+          <section>
+            <label htmlFor="email"> Email</label>
+            <input
+              type="email"
+              required
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Seu email..."
+            />
+          </section>
+          <section>
+            <label htmlFor="password">Senha </label>
+            <input
+              type="password"
+              required
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Sua senha..."
+            />
+          </section>
+          <section id="container-button">
+            <button>Entrar</button>
+          </section>
+        </div>
+      </form>
+    </div>
   );
 };
 
