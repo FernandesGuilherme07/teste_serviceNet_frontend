@@ -1,0 +1,27 @@
+header {
+  background-color: #2525ff ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 40px;
+}
+#logout{
+  padding: 10px 20px;
+  background-color: #291b79;
+  color: white;
+  border-radius: 5px;
+
+}
+
+#logout:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+header div img {
+  width: 60%;
+  border-radius: 5px;
+}

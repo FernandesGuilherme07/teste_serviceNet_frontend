@@ -1,2 +1,119 @@
-h1 {
+.container {
+  padding: 30px;
+  margin: 5px 10%;
+  display: flex;
+  align-items: center;
+  margin: 10px 15%;
+  height: 40px;
 }
+
+.container input {
+  border: 1px solid grey;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+button {
+  margin: 15px;
+  padding: 15px 50px;
+  border-radius: 10px;
+  background-color: #2525ff;
+  border: none;
+  color: #fff;
+}
+
+.container-clients {
+  border-radius: 5px;
+  gap: 10px;
+  height: 100%;
+  padding: 40px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 10%;
+  background-color: rgb(223, 221, 221);
+}
+
+ #clients {
+   border-radius: 15px;
+   background-color: #fff;
+   padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#infos div {
+  margin-top: 10px;
+  align-items: center;
+  gap: 15px;
+    display: flex;
+  flex-direction: row;
+}
+
+#button-delete {
+  padding: 15px;
+  background-color: #ec2626;
+}
+
+#button-edit {
+  padding: 15px;
+  background-color: rgb(236, 169, 45);
+}
+
+#email-tell {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 960px)
+{
+  .container {
+    flex-direction: column-reverse;
+    margin: 5px;
+    margin-top: 120px;
+
+  }
+
+  #clients {
+    flex-direction: column;
+  }
+
+  #buttons {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .container-clients {
+
+    margin: 5px 10px;
+  }
+  div #email-tell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px)
+{
+  div #email-tell {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+
+}
+
+
+
+
+
