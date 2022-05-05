@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 
 import HomePage from './pages/HomePage';
 import EditClient from './pages/EditClient';
+import AddClient from './pages/AddClient';
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/edit/:id" element={<EditClient />} />
+        <Route exact path="/add/" element={<AddClient />} />
       </Routes>
     </Router>
   );

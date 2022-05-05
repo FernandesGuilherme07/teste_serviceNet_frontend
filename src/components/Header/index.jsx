@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header>
       <div>
-        <img src="./logo.png" alt="Logo Of web site MyClients" />
+        <img src="../logo.png" alt="Logo Of web site MyClients" />
       </div>
       <div id="logout" onClick={handlerLogout}>
         Sair

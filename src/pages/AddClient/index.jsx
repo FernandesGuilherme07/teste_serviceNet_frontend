@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header';
 
-import './edit.css';
+import './add.css';
 
-const EditClient = () => {
+const AddClient = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -44,7 +44,7 @@ const EditClient = () => {
             onChange={(e) => setBrith(e.target.value)}
           />
           <div className="container-button">
-            <button>Editar cliente</button>
+            <button>+ adicionar cliente</button>
           </div>
         </form>
       </div>
@@ -52,4 +52,4 @@ const EditClient = () => {
   );
 };
 
-export default EditClient;
+export default AddClient;
