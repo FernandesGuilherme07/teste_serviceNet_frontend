@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import './clients.css';
+import { Link } from 'react-router-dom';
 
 const Clients = ({ clients }) => {
   return (
@@ -13,7 +14,7 @@ const Clients = ({ clients }) => {
             <div id="email-tell">
               <div>
                 <p>Email:</p>
-                <h3>{client.email}</h3>
+                <h3 id="email">{client.email}</h3>
               </div>
               <div>
                 <p>Data de nascimento</p>
@@ -22,7 +23,12 @@ const Clients = ({ clients }) => {
             </div>
           </div>
           <div id="buttons">
-            <button id="button-edit">Editar</button>
+            <button id="button-edit">
+              <Link className="Link" to="/edit/:id">
+                {' '}
+                Editar
+              </Link>
+            </button>
             <button id="button-delete">Excluir</button>
           </div>
         </div>

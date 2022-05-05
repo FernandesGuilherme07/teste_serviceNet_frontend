@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
 
 const Header = () => {
@@ -8,7 +9,9 @@ const Header = () => {
   return (
     <header>
       <div>
-        <img src="../logo.png" alt="Logo Of web site MyClients" />
+        <Link to="/">
+          <img src="../logo.png" alt="Logo Of web site MyClients" />
+        </Link>
       </div>
       <div id="logout" onClick={handlerLogout}>
         Sair
