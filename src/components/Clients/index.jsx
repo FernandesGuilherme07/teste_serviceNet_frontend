@@ -8,7 +8,7 @@ const Clients = ({ clients }) => {
       <h1>Clientes</h1>
 
       {clients.map((client) => (
-        <div id="clients" key={client.id}>
+        <div id="clients" key={client._id}>
           <div id="infos">
             <h2>{client.name}</h2>
             <div id="email-tell">

@@ -32,7 +32,6 @@ const HomePage = () => {
 
   useEffect(() => {
     (async () => await loadData())();
-    console.log('fuiexecutado');
   }, []);
 
   if (loadingError) {
@@ -58,7 +57,7 @@ const HomePage = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <Clients clients={clients} /> {console.log(clients)}
+      <Clients clients={clients} />
     </>
   );
 };
