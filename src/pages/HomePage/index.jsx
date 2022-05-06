@@ -57,7 +57,7 @@ const HomePage = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <Clients clients={clients} />
+      <Clients userId={userId} clients={clients} loadData={loadData} />
     </>
   );
 };

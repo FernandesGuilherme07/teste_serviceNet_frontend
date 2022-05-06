@@ -1,8 +1,16 @@
 /* eslint-disable react/prop-types */
 import './clients.css';
 import { Link } from 'react-router-dom';
+import { DeleteClient } from '../../utils/api';
 
-const Clients = ({ clients }) => {
+const Clients = ({ clients, loadData }) => {
+  const handleDeleteClient = async (clients) => {
+    const userId = '62544f36b5e025f348d5e1fb';
+    console.log('Delete client', userId, clients);
+    await DeleteClient(userId, clients);
+    await loadData();
+  };
+
   return (
     <section className="container-clients">
       <h1>Clientes</h1>
@@ -29,7 +37,12 @@ const Clients = ({ clients }) => {
                 Editar
               </Link>
             </button>
-            <button id="button-delete">Excluir</button>
+            <button
+              id="button-delete"
+              onClick={() => handleDeleteClient(client._id)}
+            >
+              Excluir
+            </button>
           </div>
         </div>
       ))}

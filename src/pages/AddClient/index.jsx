@@ -18,17 +18,18 @@ const AddClient = () => {
   const history = useNavigate();
 
   const onSubmit = (data) => {
-    const newClient = async (Data) => {
-      const userId = '62544f36b5e025f348d5e1fb';
-
-      try {
-        await CreateClient(userId, Data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     newClient(data);
     return history('/');
+  };
+
+  const newClient = async (Data) => {
+    const userId = '62544f36b5e025f348d5e1fb';
+
+    try {
+      await CreateClient(userId, Data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
