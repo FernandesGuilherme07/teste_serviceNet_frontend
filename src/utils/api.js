@@ -13,6 +13,18 @@ export const getClients = async (userId, query) => {
   return api.get(`${url}`);
 };
 
+export const getClient = async (userId, id) => {
+  let url = `/v1/users/${userId}/clients/${id}`;
+
+  return api.get(`${url}`);
+};
+
+export const updateClient = async (userId, id, data) => {
+  let url = `/v1/users/${userId}/clients/${id}`;
+
+  return api.put(`${url}`, data);
+};
+
 export const CreateClient = async (userId, data) => {
   try {
     let url = `/v1/users/${userId}/clients/`;

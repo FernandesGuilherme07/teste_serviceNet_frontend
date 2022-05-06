@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* prettier-disable */
 import './clients.css';
 import { Link } from 'react-router-dom';
 import { DeleteClient } from '../../utils/api';
@@ -16,7 +17,7 @@ const Clients = ({ clients, loadData }) => {
       <h1>Clientes</h1>
 
       {clients.map((client) => (
-        <div id="clients" key={client._id}>
+        <div id="clients" key={client.email}>
           <div id="infos">
             <h2>{client.name}</h2>
             <div id="email-tell">
@@ -32,7 +33,7 @@ const Clients = ({ clients, loadData }) => {
           </div>
           <div id="buttons">
             <button id="button-edit">
-              <Link className="Link" to="/edit/:id">
+              <Link className="Link" to={{ pathname: `/edit/${client._id}` }}>
                 {' '}
                 Editar
               </Link>
@@ -41,7 +42,7 @@ const Clients = ({ clients, loadData }) => {
               id="button-delete"
               onClick={() => handleDeleteClient(client._id)}
             >
-              Excluir
+              excluir
             </button>
           </div>
         </div>
