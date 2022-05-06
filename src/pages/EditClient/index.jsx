@@ -18,14 +18,13 @@ const EditClient = () => {
 
   const userId = '62544f36b5e025f348d5e1fb';
   const { id } = useParams();
+  const history = useNavigate();
 
   useEffect(() => {
     getClient(userId, id).then((response) => {
       reset(response.data);
     });
   }, []);
-
-  const history = useNavigate();
 
   const onSubmit = (data) => {
     EditClient(userId, id, data);
@@ -53,8 +52,10 @@ const EditClient = () => {
 
           <label htmlFor="password">Senha</label>
           <input type="text" name="password" {...register('password')} />
+
           <label htmlFor="brith">Data de nascimento</label>
           <input type="text" name="brith" {...register('brith')} />
+
           <div className="container-button">
             <button>editar cliente</button>
           </div>

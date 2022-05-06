@@ -1,0 +1,79 @@
+ #clients {
+   border-radius: 15px;
+   background-color: #fff;
+   padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#infos div {
+  margin-top: 10px;
+  align-items: center;
+  gap: 15px;
+    display: flex;
+  flex-direction: row;
+}
+
+#button-delete {
+  padding: 15px;
+  background-color: #ec2626;
+}
+
+#button-edit {
+  padding: 15px;
+  background-color: rgb(236, 169, 45);
+}
+
+#email-tell {
+  display: flex;
+  flex-direction: row;
+}
+
+.Link {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 960px)
+{
+  #email h3 {
+    display: block;
+  }
+
+  #clients {
+    flex-direction: column;
+  }
+
+  #buttons {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+  }
+
+  .container-clients {
+
+    margin: 5px 10px;
+  }
+  div #email-tell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+}
+
+@media (max-width: 600px)
+{
+  div #email-tell {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+
+}

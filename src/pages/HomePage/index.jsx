@@ -5,7 +5,6 @@ import Clients from '../../components/Clients';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import LoadingError from '../../components/LoadingError';
-
 import { getClients } from '../../utils/api';
 
 import './home.css';
@@ -34,6 +33,12 @@ const HomePage = () => {
     (async () => await loadData())();
   }, []);
 
+  const searchLowerCase = search.toLocaleLowerCase();
+
+  const filteredClient = clients.filter((client) =>
+    client.name.toLowerCase().includes(searchLowerCase),
+  );
+
   if (loadingError) {
     return <LoadingError />;
   }
@@ -57,7 +62,8 @@ const HomePage = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <Clients clients={clients} loadData={loadData} />
+
+      <Clients clients={filteredClient} loadData={loadData} />
     </>
   );
 };
