@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import Header from '../../components/Header';
+import { AuthContext } from '../../context/AuthContext';
 
-import { CreateClient } from '../../utils/api';
+import { CreateClient } from '../../utils/api/clients/createClient';
 
 import './add.css';
 
 const AddClient = () => {
+  const { userId } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -23,10 +25,9 @@ const AddClient = () => {
   };
 
   const newClient = async (Data) => {
-    const userId = '62544f36b5e025f348d5e1fb';
-
+    const UserId = userId;
     try {
-      await CreateClient(userId, Data);
+      await CreateClient(UserId, Data);
     } catch (error) {
       console.log(error);
     }

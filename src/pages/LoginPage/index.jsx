@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
 
 import './login.css';
 
 const LoginPage = () => {
+  const { authenticated, user, login } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  console.log(email);
-  console.log(password);
+  const handleLogin = async () => {
+    login(email.password);
+  };
 
   return (
     <div className="body">
@@ -40,7 +44,7 @@ const LoginPage = () => {
             />
           </section>
           <section id="container-button">
-            <button>Entrar</button>
+            <button onClick={handleLogin}>Entrar</button>
           </section>
         </div>
       </form>

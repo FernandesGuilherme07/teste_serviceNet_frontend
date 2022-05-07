@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import Header from '../../components/Header';
 
-import { updateClient, getClient } from '../../utils/api';
+import { updateClient } from '../../utils/api/clients/updateClient';
+import { getClient } from '../../utils/api/clients/showClient';
 
 import './edit.css';
+import { AuthContext } from '../../context/AuthContext';
 
 const EditClient = () => {
+  const { userId } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -16,7 +19,6 @@ const EditClient = () => {
     reset,
   } = useForm();
 
-  const userId = '62544f36b5e025f348d5e1fb';
   const { id } = useParams();
   const history = useNavigate();
 

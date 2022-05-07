@@ -1,5 +1,8 @@
 h1 {
+  width: 100%;
+  text-align: center;
   font-size: 2.5rem;
+  padding: 20px;
 }
 
 .container-clients {

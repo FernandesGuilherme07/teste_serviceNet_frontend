@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import Clients from '../../components/Clients';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import LoadingError from '../../components/LoadingError';
-import { getClients } from '../../utils/api';
+import { AuthContext } from '../../context/AuthContext';
+import { getClients } from '../../utils/api/clients/getClients';
 
 import './home.css';
 
-const userId = '62544f36b5e025f348d5e1fb';
-
 const HomePage = () => {
+  const { userId } = useContext(AuthContext);
+
   const [clients, setClients] = useState([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
@@ -57,7 +58,7 @@ const HomePage = () => {
 
         <input
           type="text"
-          placeholder="pesquisar cliente por email..."
+          placeholder="pesquisar cliente..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

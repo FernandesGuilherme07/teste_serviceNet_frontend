@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 /* prettier-disable */
 import './clients.css';
-import { Link } from 'react-router-dom';
-import { DeleteClient } from '../../utils/api';
+
+import { DeleteClient } from '../../utils/api/clients/deleteClient';
 import Client from '../Client';
 
 const Clients = ({ clients, loadData }) => {
