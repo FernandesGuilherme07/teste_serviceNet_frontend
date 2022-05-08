@@ -1,4 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { Link } from 'react-router-dom';
 
 import Clients from '../../components/Clients';
@@ -11,33 +15,43 @@ import { getClients } from '../../utils/api/clients/getClients';
 import './home.css';
 
 const HomePage = () => {
-  const { userId } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const userId = user.id;
 
   const [clients, setClients] = useState([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
-  const [loadingError, setLoadingError] = useState(false);
+  const [loadingError, setLoadingError] =
+    useState(false);
 
-  const loadData = async (query = '') => {
+  const loadData = async (userId, query = '') => {
     try {
       setLoading(true);
-      const response = await getClients(userId);
+      const response = await getClients(
+        userId,
+        query,
+      );
       setClients(response.data);
+      console.log(userId);
       setLoading(false);
     } catch (error) {
-      console.log(erro);
+      console.log({ err: error });
       setLoadingError(true);
     }
   };
 
   useEffect(() => {
-    (async () => await loadData())();
-  }, []);
+    (async () => await loadData(userId))();
+  }, [userId]);
 
-  const searchLowerCase = search.toLocaleLowerCase();
+  const searchLowerCase =
+    search.toLocaleLowerCase();
 
-  const filteredClient = clients.filter((client) =>
-    client.name.toLowerCase().includes(searchLowerCase),
+  const filteredClient = clients.filter(
+    (client) =>
+      client.name
+        .toLowerCase()
+        .includes(searchLowerCase),
   );
 
   if (loadingError) {
@@ -60,11 +74,17 @@ const HomePage = () => {
           type="text"
           placeholder="pesquisar cliente..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) =>
+            setSearch(e.target.value)
+          }
         />
       </div>
 
-      <Clients clients={filteredClient} loadData={loadData} />
+      <Clients
+        clients={filteredClient}
+        loadData={loadData}
+        userId={userId}
+      />
     </>
   );
 };

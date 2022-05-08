@@ -2,36 +2,57 @@
 import { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 
+import { useNavigate } from 'react-router-dom';
+
 import { createSession } from '../utils/api/session/createSession';
+import { api } from '../utils/api/api';
 
 export const AuthProvider = ({ children }) => {
-  const [user, setuser] = useState(null);
+  const Navigate = useNavigate();
+
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const user = localStorage.setItem('user');
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
 
-    if (user) {
-      setuser(JSON.parse(user));
+    if (user && token) {
+      setUser(JSON.parse(user));
+      api.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${token}`;
     }
+    setLoading(false);
   }, []);
 
-  const login = async (email, password) => {
-    const response = await createSession(
-      email,
-      password,
-    );
+  const login = async (data) => {
+    const response = await createSession(data);
+    api.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${response.data.token}`;
 
     localStorage.setItem(
       'user',
-      JSON.stringify(response.user),
+      JSON.stringify(response.data.user),
+    );
+    localStorage.setItem(
+      'user',
+      response.data.token,
     );
 
-    setuser(response.data.user);
+    setUser(response.data.user);
+
+    Navigate(`/`);
   };
 
   const logout = () => {
-    setuser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    api.defaults.headers.Autorization = null;
+    setUser(null);
+
+    Navigate('/login');
   };
 
   return (
@@ -42,7 +63,6 @@ export const AuthProvider = ({ children }) => {
         loading,
         login,
         logout,
-        userId: '62544f36b5e025f348d5e1fb',
       }}
     >
       {children}

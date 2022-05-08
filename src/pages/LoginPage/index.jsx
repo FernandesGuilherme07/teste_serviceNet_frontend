@@ -1,50 +1,65 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+
+import { useForm } from 'react-hook-form';
 
 import { AuthContext } from '../../context/AuthContext';
 
 import './login.css';
 
 const LoginPage = () => {
-  const { authenticated, user, login } = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { authenticated, user, login } =
+    useContext(AuthContext);
 
-  const handleLogin = async () => {
-    login(email.password);
+  const {
+    register,
+    handleSubmit,
+    formState: { erros },
+  } = useForm();
+
+  const handleLogin = async (data) => {
+    try {
+      await login(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="body">
-      <form action="" id="form">
+      <form
+        onSubmit={handleSubmit(handleLogin)}
+        id="form"
+      >
         <div id="login">
           <section id="container-logo">
             <img src="./logo.png" alt="" />
           </section>
-
+          autenticado:{String(authenticated)}
           <section>
             <label htmlFor="email"> Email</label>
             <input
               type="email"
               required
               name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               placeholder="Seu email..."
+              {...register('email')}
             />
           </section>
           <section>
-            <label htmlFor="password">Senha </label>
+            <label htmlFor="password">
+              Senha
+            </label>
             <input
               type="password"
               required
               name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               placeholder="Sua senha..."
+              {...register('password')}
             />
           </section>
           <section id="container-button">
-            <button onClick={handleLogin}>Entrar</button>
+            <button>Entrar</button>
           </section>
         </div>
       </form>

@@ -1,6 +1,9 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import {
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 
 import Header from '../../components/Header';
 import { AuthContext } from '../../context/AuthContext';
@@ -10,7 +13,8 @@ import { CreateClient } from '../../utils/api/clients/createClient';
 import './add.css';
 
 const AddClient = () => {
-  const { userId } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const userId = user.id;
   const {
     register,
     handleSubmit,
@@ -25,9 +29,8 @@ const AddClient = () => {
   };
 
   const newClient = async (Data) => {
-    const UserId = userId;
     try {
-      await CreateClient(UserId, Data);
+      await CreateClient(userId, Data);
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +64,9 @@ const AddClient = () => {
             name="password"
             {...register('password')}
           />
-          <label htmlFor="brith">Data de nascimento</label>
+          <label htmlFor="brith">
+            Data de nascimento
+          </label>
           <input
             placeholder="Digite a data de nascimento..."
             type="text"

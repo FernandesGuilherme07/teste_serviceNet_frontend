@@ -1,6 +1,12 @@
-import React, { useEffect, useContext } from 'react';
+import React, {
+  useEffect,
+  useContext,
+} from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import {
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 
 import Header from '../../components/Header';
 
@@ -11,16 +17,16 @@ import './edit.css';
 import { AuthContext } from '../../context/AuthContext';
 
 const EditClient = () => {
-  const { userId } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const userId = user.id;
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
     formState: { erros },
     reset,
   } = useForm();
-
-  const { id } = useParams();
-  const history = useNavigate();
+  const Navigate = useNavigate();
 
   useEffect(() => {
     getClient(userId, id).then((response) => {
@@ -29,11 +35,12 @@ const EditClient = () => {
   }, []);
 
   const onSubmit = (data) => {
-    EditClient(userId, id, data);
-    return history('/');
+    EditClient(id, data);
+    return Navigate('/');
   };
 
-  const EditClient = async (userId, id, Data) => {
+  const EditClient = async (id, Data) => {
+    const userId = user.id;
     try {
       await updateClient(userId, id, Data);
     } catch (error) {
@@ -47,16 +54,34 @@ const EditClient = () => {
       <div className="container">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="name">Nome</label>
-          <input type="text" name="name" {...register('name')} />
+          <input
+            type="text"
+            name="name"
+            {...register('name')}
+          />
 
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" {...register('email')} />
+          <input
+            type="text"
+            name="email"
+            {...register('email')}
+          />
 
           <label htmlFor="password">Senha</label>
-          <input type="text" name="password" {...register('password')} />
+          <input
+            type="text"
+            name="password"
+            {...register('password')}
+          />
 
-          <label htmlFor="brith">Data de nascimento</label>
-          <input type="text" name="brith" {...register('brith')} />
+          <label htmlFor="brith">
+            Data de nascimento
+          </label>
+          <input
+            type="text"
+            name="brith"
+            {...register('brith')}
+          />
 
           <div className="container-button">
             <button>editar cliente</button>

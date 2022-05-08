@@ -1,7 +1,9 @@
 import './loading.css';
 
 const Loading = () => {
-  return <div className="loading">Carregando...</div>;
+  return (
+    <div className="loading">Carregando...</div>
+  );
 };
 
 export default Loading;
