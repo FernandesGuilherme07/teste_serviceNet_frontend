@@ -1,9 +1,6 @@
 import { api } from '../../api/api';
 
-export const CreateClient = async (
-  userId,
-  data,
-) => {
+export const CreateClient = async (userId, data) => {
   try {
     let url = `/v1/users/${userId}/clients/`;
 

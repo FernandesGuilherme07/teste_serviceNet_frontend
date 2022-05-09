@@ -1,9 +1,6 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import {
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import { AuthContext } from '../../context/AuthContext';
@@ -64,9 +61,7 @@ const AddClient = () => {
             name="password"
             {...register('password')}
           />
-          <label htmlFor="brith">
-            Data de nascimento
-          </label>
+          <label htmlFor="brith">Data de nascimento</label>
           <input
             placeholder="Digite a data de nascimento..."
             type="text"

@@ -7,8 +7,7 @@ import { AuthContext } from '../../context/AuthContext';
 import './login.css';
 
 const LoginPage = () => {
-  const { authenticated, user, login } =
-    useContext(AuthContext);
+  const { authenticated, user, login } = useContext(AuthContext);
 
   const {
     register,
@@ -31,10 +30,7 @@ const LoginPage = () => {
 
   return (
     <div className="body">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        id="form"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} id="form">
         <div id="login">
           <section id="container-logo">
             <img src="./logo.png" alt="" />
@@ -51,9 +47,7 @@ const LoginPage = () => {
             />
           </section>
           <section>
-            <label htmlFor="password">
-              Senha
-            </label>
+            <label htmlFor="password">Senha</label>
             <input
               type="password"
               required

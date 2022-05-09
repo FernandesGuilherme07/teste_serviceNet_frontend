@@ -10,10 +10,7 @@ const Header = () => {
     <header>
       <div>
         <Link to="/">
-          <img
-            src="../logo.png"
-            alt="Logo Of web site MyClients"
-          />
+          <img src="../logo.png" alt="Logo Of web site MyClients" />
         </Link>
       </div>
       <div id="logout" onClick={handlerLogout}>

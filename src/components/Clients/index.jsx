@@ -7,11 +7,7 @@ import { DeleteClient } from '../../utils/api/clients/deleteClient';
 import { useNavigate } from 'react-router-dom';
 import Client from '../Client';
 
-const Clients = ({
-  clients,
-  loadData,
-  userId,
-}) => {
+const Clients = ({ clients, loadData, userId }) => {
   const Navigate = useNavigate();
 
   const handleDeleteClient = async (clients) => {
@@ -25,10 +21,7 @@ const Clients = ({
     <section className="container-clients">
       <h1>Clientes</h1>
 
-      <Client
-        clients={clients}
-        handleDeleteClient={handleDeleteClient}
-      />
+      <Client clients={clients} handleDeleteClient={handleDeleteClient} />
     </section>
   );
 };

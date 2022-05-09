@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom';
 import './client.css';
 
-const Client = ({
-  clients,
-  handleDeleteClient,
-}) => {
+const Client = ({ clients, handleDeleteClient }) => {
   return clients.map((client) => (
     <div id="clients" key={client.email}>
       <div id="infos">
@@ -25,7 +22,7 @@ const Client = ({
           <Link
             className="Link"
             to={{
-              pathname: `/edit/${client._id}`,
+              pathname: `/edit/${client.id}`,
             }}
           >
             {' '}
@@ -34,9 +31,7 @@ const Client = ({
         </button>
         <button
           id="button-delete"
-          onClick={() =>
-            handleDeleteClient(client._id)
-          }
+          onClick={() => handleDeleteClient(client.id)}
         >
           excluir
         </button>

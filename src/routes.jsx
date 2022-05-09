@@ -1,11 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 
-import {
-  Route,
-  Routes,
-  useNavigate,
-} from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import LoginPage from './pages/LoginPage';
 
@@ -19,8 +15,7 @@ const AppRoutes = () => {
   const Navigate = useNavigate();
 
   const Private = ({ children }) => {
-    const { authenticated, loading } =
-      useContext(AuthContext);
+    const { authenticated, loading } = useContext(AuthContext);
 
     if (loading) {
       return <Loading />;
@@ -34,11 +29,7 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route
-        exact
-        path="/login"
-        element={<LoginPage />}
-      />
+      <Route exact path="/login" element={<LoginPage />} />
 
       <Route
         path="/"

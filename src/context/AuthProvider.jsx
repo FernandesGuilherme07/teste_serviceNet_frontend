@@ -19,29 +19,18 @@ export const AuthProvider = ({ children }) => {
 
     if (user && token) {
       setUser(JSON.parse(user));
-      api.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${token}`;
+      api.defaults.headers.Authorization = `Bearer ${token}`;
     }
     setLoading(false);
   }, []);
 
   const login = async (email, password) => {
-    const response = await createSession(
-      email,
-      password,
-    );
+    const response = await createSession(email, password);
     console.log('token:', response.data.token);
     api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
-    localStorage.setItem(
-      'user',
-      JSON.stringify(response.data.user),
-    );
-    localStorage.setItem(
-      'user',
-      response.data.token,
-    );
+    localStorage.setItem('user', JSON.stringify(response.data.user));
+    localStorage.setItem('user', response.data.token);
 
     setUser(response.data.user);
 

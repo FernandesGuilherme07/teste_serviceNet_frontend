@@ -1,8 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Clients from '../../components/Clients';
@@ -21,16 +17,12 @@ const HomePage = () => {
   const [clients, setClients] = useState([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
-  const [loadingError, setLoadingError] =
-    useState(false);
+  const [loadingError, setLoadingError] = useState(false);
 
   const loadData = async (userId, query = '') => {
     try {
       setLoading(true);
-      const response = await getClients(
-        userId,
-        query,
-      );
+      const response = await getClients(userId, query);
       setClients(response.data);
       console.log(userId);
       setLoading(false);
@@ -44,14 +36,10 @@ const HomePage = () => {
     (async () => await loadData(userId))();
   }, [userId]);
 
-  const searchLowerCase =
-    search.toLocaleLowerCase();
+  const searchLowerCase = search.toLocaleLowerCase();
 
-  const filteredClient = clients.filter(
-    (client) =>
-      client.name
-        .toLowerCase()
-        .includes(searchLowerCase),
+  const filteredClient = clients.filter((client) =>
+    client.name.toLowerCase().includes(searchLowerCase),
   );
 
   if (loadingError) {
@@ -74,17 +62,11 @@ const HomePage = () => {
           type="text"
           placeholder="pesquisar cliente..."
           value={search}
-          onChange={(e) =>
-            setSearch(e.target.value)
-          }
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
-      <Clients
-        clients={filteredClient}
-        loadData={loadData}
-        userId={userId}
-      />
+      <Clients clients={filteredClient} loadData={loadData} userId={userId} />
     </>
   );
 };
