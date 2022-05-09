@@ -1,8 +1,11 @@
 import { api } from '../api';
 
 export const createSession = async (
-  data,
-  token,
+  email,
+  password,
 ) => {
-  return api.post('/v1/sessions/', data);
+  return api.post('/v1/sessions/', {
+    email,
+    password,
+  });
 };

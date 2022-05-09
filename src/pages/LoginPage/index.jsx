@@ -16,10 +16,14 @@ const LoginPage = () => {
     formState: { erros },
   } = useForm();
 
-  const handleLogin = async (data) => {
+  const onSubmit = (data) => {
+    handleLogin(data.email, data.password);
+  };
+
+  const handleLogin = async (email, password) => {
     try {
-      await login(data);
-      console.log(data);
+      await login(email, password);
+      console.log(email, password);
     } catch (error) {
       console.log(error);
     }
@@ -28,7 +32,7 @@ const LoginPage = () => {
   return (
     <div className="body">
       <form
-        onSubmit={handleSubmit(handleLogin)}
+        onSubmit={handleSubmit(onSubmit)}
         id="form"
       >
         <div id="login">

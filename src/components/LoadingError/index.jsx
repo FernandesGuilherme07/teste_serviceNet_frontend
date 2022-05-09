@@ -10,7 +10,7 @@ const LoadingError = () => {
   return (
     <div className="loading">
       Erro ao carregar os dados de Clientes.{' '}
-      <Link to={`/${id}`}>voltar</Link>
+      <Link to={`/`}>voltar</Link>
     </div>
   );
 };

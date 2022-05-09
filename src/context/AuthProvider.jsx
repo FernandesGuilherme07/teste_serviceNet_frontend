@@ -26,11 +26,13 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = async (data) => {
-    const response = await createSession(data);
-    api.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${response.data.token}`;
+  const login = async (email, password) => {
+    const response = await createSession(
+      email,
+      password,
+    );
+    console.log('token:', response.data.token);
+    api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
     localStorage.setItem(
       'user',
