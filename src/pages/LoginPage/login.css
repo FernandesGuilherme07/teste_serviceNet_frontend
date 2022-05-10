@@ -1,4 +1,5 @@
 div .body{
+  height: 100vh;
   background-image: radial-gradient(circle at 2.17% 83.49%, #ff68c5 0, #ff5ccf 10%, #ff51d8 20%, #f547e1 30%, #d940ea 40%, #b53cf2 50%, #873df9 60%, #3a42ff 70%, #0047ff 80%, #004dff 90%, #0051ff 100%);
 }
 #form {

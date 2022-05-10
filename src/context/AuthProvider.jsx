@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
-import { AuthContext } from './AuthContext';
-
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import { AuthContext } from './AuthContext';
 import { createSession } from '../utils/api/session/createSession';
 import { api } from '../utils/api/api';
 
@@ -25,15 +25,19 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    const response = await createSession(email, password);
-    api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
+    try {
+      const response = await createSession(email, password);
+      api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
-    localStorage.setItem('user', JSON.stringify(response.data.user));
-    localStorage.setItem('user', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      localStorage.setItem('user', response.data.token);
 
-    setUser(response.data.user);
+      setUser(response.data.user);
 
-    Navigate(`/`);
+      Navigate(`/`);
+    } catch (error) {
+      toast.error('email e/ou senha inválido.');
+    }
   };
 
   const logout = () => {

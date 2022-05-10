@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import Header from '../../components/Header';
 import { AuthContext } from '../../context/AuthContext';
-
 import { CreateClient } from '../../utils/api/clients/createClient';
 
 import './add.css';
@@ -28,6 +28,7 @@ const AddClient = () => {
   const newClient = async (Data) => {
     try {
       await CreateClient(userId, Data);
+      toast.success(`Cliente criado com sucesso!`);
     } catch (error) {
       console.log(error);
     }

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import Clients from '../../components/Clients';
 import Header from '../../components/Header';
@@ -46,6 +47,7 @@ const HomePage = () => {
     await DeleteClient(userId, client);
     await loadData();
     Navigate('/');
+    toast.success(`cliente apagado com sucesso!`);
   };
 
   if (loadingError) {

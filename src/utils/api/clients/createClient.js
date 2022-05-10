@@ -1,4 +1,5 @@
 import { api } from '../../api/api';
+import { toast } from 'react-toastify';
 
 export const CreateClient = async (userId, data) => {
   try {
@@ -6,6 +7,6 @@ export const CreateClient = async (userId, data) => {
 
     return api.post(`${url}`, data);
   } catch (error) {
-    error;
+    toast.success('email e/ou senha inválido.');
   }
 };

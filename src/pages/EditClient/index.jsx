@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import Header from '../../components/Header';
 
@@ -37,7 +38,9 @@ const EditClient = () => {
     const userId = user.id;
     try {
       await updateClient(userId, id, Data);
+      toast.success(`Cliente editado com sucesso!`);
     } catch (error) {
+      toast.error(`Email já existente.`);
       console.log(error);
     }
   };
