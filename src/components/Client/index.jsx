@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import P from 'prop-types';
+
 import './client.css';
 
 const Client = ({ clients, handleDeleteClient }) => {
@@ -22,7 +24,7 @@ const Client = ({ clients, handleDeleteClient }) => {
           <Link
             className="Link"
             to={{
-              pathname: `/edit/${client.id}`,
+              pathname: `/edit/${client._id}`,
             }}
           >
             {' '}
@@ -31,13 +33,18 @@ const Client = ({ clients, handleDeleteClient }) => {
         </button>
         <button
           id="button-delete"
-          onClick={() => handleDeleteClient(client.id)}
+          onClick={() => handleDeleteClient(client._id)}
         >
           excluir
         </button>
       </div>
     </div>
   ));
+};
+
+Clients.propTypes = {
+  clients: P.object.isRequired,
+  handleDeleteClient: P.func.isRequired,
 };
 
 export default Client;

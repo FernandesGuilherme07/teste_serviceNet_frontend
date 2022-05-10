@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const response = await createSession(email, password);
-    console.log('token:', response.data.token);
     api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
     localStorage.setItem('user', JSON.stringify(response.data.user));

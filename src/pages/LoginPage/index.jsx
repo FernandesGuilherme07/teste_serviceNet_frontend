@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/AuthContext';
 import './login.css';
 
 const LoginPage = () => {
-  const { authenticated, user, login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const {
     register,
@@ -22,7 +22,6 @@ const LoginPage = () => {
   const handleLogin = async (email, password) => {
     try {
       await login(email, password);
-      console.log(email, password);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +34,6 @@ const LoginPage = () => {
           <section id="container-logo">
             <img src="./logo.png" alt="" />
           </section>
-          autenticado:{String(authenticated)}
           <section>
             <label htmlFor="email"> Email</label>
             <input
