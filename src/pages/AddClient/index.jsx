@@ -40,6 +40,7 @@ const AddClient = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="name">Nome</label>
           <input
+            required
             placeholder="Digite o nome do cliente..."
             type="text"
             name="name"
@@ -48,14 +49,16 @@ const AddClient = () => {
 
           <label htmlFor="email">Email</label>
           <input
+            required
             placeholder="Digite o email do cliente..."
-            type="text"
+            type="email"
             name="email"
             {...register('email')}
           />
 
           <label htmlFor="password">Senha</label>
           <input
+            required
             placeholder="Digite a senha do cliente..."
             type="text"
             name="password"
@@ -63,8 +66,9 @@ const AddClient = () => {
           />
           <label htmlFor="brith">Data de nascimento</label>
           <input
+            required
             placeholder="Digite a data de nascimento..."
-            type="text"
+            type="date"
             name="brith"
             {...register('brith')}
           />

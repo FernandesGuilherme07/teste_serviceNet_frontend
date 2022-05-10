@@ -14,7 +14,7 @@ const Clients = ({ clients, handleDeleteClient }) => {
 };
 
 Clients.propTypes = {
-  clients: P.object.isRequired,
+  clients: P.array.isRequired,
   handleDeleteClient: P.func.isRequired,
 };
 

@@ -48,16 +48,21 @@ const EditClient = () => {
       <div className="container">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="name">Nome</label>
-          <input type="text" name="name" {...register('name')} />
+          <input required type="text" name="name" {...register('name')} />
 
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" {...register('email')} />
+          <input required type="email" name="email" {...register('email')} />
 
           <label htmlFor="password">Senha</label>
-          <input type="text" name="password" {...register('password')} />
+          <input
+            required
+            type="text"
+            name="password"
+            {...register('password')}
+          />
 
           <label htmlFor="brith">Data de nascimento</label>
-          <input type="text" name="brith" {...register('brith')} />
+          <input required type="date" name="brith" {...register('brith')} />
 
           <div className="container-button">
             <button>editar cliente</button>
